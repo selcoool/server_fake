@@ -1,0 +1,93 @@
+services:
+  nodejs:
+    container_name: nodejs
+    build: ./nodejs  # This points to the directory containing your Dockerfile and HTML file
+    # ports:
+    #   - "9000:80" 
+
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      # - ./nginx/sites-available:/etc/nginx/sites-available
+      # - ./nginx/sites-enabled:/etc/nginx/sites-enabled
+      # - ./nginx/conf.d:/etc/nginx/conf.d
+
+# services:
+
+#   test_img:
+#     container_name: test_img
+#     build: ./test_img  # This points to the directory containing your Dockerfile
+#     # ports:
+#     #   - "9000:9000"  # Map the port to expose your Node.js app outside the container
+
+#   nginx:
+#     image: nginx:latest
+#     container_name: nginx
+#     restart: always
+#     ports:
+#       - "80:80"
+#       - "443:443"
+#     volumes:
+#       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+#       - ./nginx/sites-available:/etc/nginx/sites-available
+#       - ./nginx/sites-enabled:/etc/nginx/sites-enabled
+#       - ./nginx/conf.d:/etc/nginx/conf.d
+#       # - ./certbot/conf:/etc/letsencrypt
+#       # - ./certbot/www:/var/www/certbot
+#     networks:
+#       - selcoool-network
+#     depends_on:
+#       - test_img
+#       # - backend
+
+#   # certbot:
+#   #   image: certbot/certbot
+#   #   container_name: certbot
+#   #   volumes:
+#   #     - ./certbot/conf:/etc/letsencrypt
+#   #     - ./certbot/www:/var/www/certbot
+#   #   networks:
+#   #     - selcoool-network
+
+# networks:
+#   selcoool-network:
+#     driver: bridge
+
+
+
+
+
+
+
+
+
+
+
+  # nginx:
+  #   container_name: nginx
+  #   restart: unless-stopped
+  #   image: nginx
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+    # volumes:
+    #   - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      # - ./nginx/sites-available:/etc/nginx/sites-available
+      # - ./nginx/sites-enabled:/etc/nginx/sites-enabled
+      # - ./nginx/conf.d:/etc/nginx/conf.d
+
+    # certbot:
+    #   image: certbot/certbot
+    #   container_name: certbot
+    #   # volumes:
+    #   #   - ./certbot/conf:/etc/letsencrypt
+    #   #   - ./certbot/www:/var/www/certbot
+    #   networks:
+    #     - selcoool-network
